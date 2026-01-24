@@ -31,7 +31,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     //obtener todos los usuarios
-    public List<UserDTO> findAll(){
+    public  List<UserDTO> findAll(){
         log.info("Buscando todos los usuarios");
         return userRepository.findAll()
                 .stream()
@@ -70,7 +70,7 @@ public class UserService {
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .active(true)
                 .build();
