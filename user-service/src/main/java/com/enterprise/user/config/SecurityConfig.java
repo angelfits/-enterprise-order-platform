@@ -53,6 +53,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
+                        // Swagger UI - rutas públicas
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui.html").permitAll()
+
                         // Rutas protegidas (requieren token)
                         .requestMatchers("/api/users/**").authenticated()
 
